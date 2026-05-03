@@ -43,6 +43,21 @@ export const siteConfig = {
       { label: "WIZARDRY", position: "bottom", rotate: -7 },
     ],
   },
+  directors: {
+    background: "#FF5A52",
+    textColor: "#FFC9C5",
+    accentColor: "#E4FE52",
+    items: [
+      { name: "Project 01" },
+      { name: "Project 02" },
+      { name: "Project 03" },
+      { name: "Project 04" },
+      { name: "Project 05" },
+      { name: "Project 06" },
+      { name: "Project 07" },
+      { name: "Project 08" },
+    ],
+  },
 } as const;
 
 export type NavItem = (typeof siteConfig.nav)[number];
