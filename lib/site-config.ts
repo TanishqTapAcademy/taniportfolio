@@ -22,6 +22,27 @@ export const siteConfig = {
     wordmarkColor: "#FFC9C5",
     accentColor: "#E4FE52",
   },
+  crafty: {
+    background: "#FF5A52",
+    textColor: "#FFC9C5",
+    headline: ["A crafty bunch", "of creative", "problem solvers."],
+    bgVideo: {
+      poster:
+        "https://cdn.prod.website-files.com/699637b29cf8a85d12ebac48/69aaa9d802173759e72876ed_hero_logo_loop-good_poster.0000000.jpg",
+      mp4: "https://cdn.prod.website-files.com/699637b29cf8a85d12ebac48/69aaa9d802173759e72876ed_hero_logo_loop-good_mp4.mp4",
+      webm: "https://cdn.prod.website-files.com/699637b29cf8a85d12ebac48/69aaa9d802173759e72876ed_hero_logo_loop-good_webm.webm",
+    },
+    stickerColors: {
+      face: "#E4FE52",
+      side: "#A8C220",
+      text: "#FF3B33",
+    },
+    stickers: [
+      { label: "ANIMATION", position: "top", rotate: -10 },
+      { label: "LIVE ACTION", position: "middle", rotate: 8 },
+      { label: "WIZARDRY", position: "bottom", rotate: -7 },
+    ],
+  },
 } as const;
 
 export type NavItem = (typeof siteConfig.nav)[number];
