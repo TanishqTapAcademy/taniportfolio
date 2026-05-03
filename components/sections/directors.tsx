@@ -69,13 +69,13 @@ export function Directors() {
                   transform: `rotateY(${rotateAmount * i}deg) translateZ(${radius})`,
                   backfaceVisibility: "hidden",
                   background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.06))",
-                  outline: "1px solid rgba(255,255,255,0.2)",
+                    "linear-gradient(135deg, rgba(42,24,16,0.12), rgba(42,24,16,0.04))",
+                  outline: "1px solid rgba(42,24,16,0.18)",
                 }}
               >
                 <span
                   className="font-departure text-2xl uppercase tracking-widest"
-                  style={{ color: "rgba(255,255,255,0.55)" }}
+                  style={{ color: "rgba(42,24,16,0.55)" }}
                 >
                   {item.name}
                 </span>

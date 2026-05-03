@@ -44,9 +44,9 @@ export const siteConfig = {
     ],
   },
   directors: {
-    background: "#FF5A52",
-    textColor: "#FFC9C5",
-    accentColor: "#E4FE52",
+    background: "#E0C8BB",
+    textColor: "#2A1810",
+    accentColor: "#FF3B33",
     items: [
       { name: "Project 01" },
       { name: "Project 02" },
