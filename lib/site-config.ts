@@ -43,6 +43,80 @@ export const siteConfig = {
       { label: "WIZARDRY", position: "bottom", rotate: -7 },
     ],
   },
+  about: {
+    background: "#2D00F7",
+    textColor: "#E0C8BB",
+    accent: "#FFE6D6",
+    eyebrow: "About",
+    name: "Tanishq Bhosale.",
+    role: "Full Stack + AI Engineer · Bangalore",
+    intro:
+      "Two-plus years shipping production LLM and agentic AI systems — LangGraph state machines, FastAPI streams, React Native interfaces. I care about the moment where a complex system feels obvious to use, even when the plumbing underneath isn't.",
+    sub: "Currently at Tap Academy (Full Stack) and Quanta (SDE1). Previously interned at Visionet Systems. B.Tech in Computer Science (Data Science), Presidency University, 2020–2024.",
+    skills: [
+      {
+        title: "AI / ML",
+        items: [
+          "LangGraph",
+          "LangChain",
+          "LLM Integration",
+          "RAG",
+          "pgvector",
+          "Agentic Workflows",
+          "Prompt Engineering",
+          "Mem0",
+        ],
+      },
+      {
+        title: "Languages",
+        items: ["Python", "JavaScript", "TypeScript"],
+      },
+      {
+        title: "Frontend",
+        items: [
+          "React",
+          "React Native",
+          "Expo",
+          "Redux",
+          "Zustand",
+          "Tailwind CSS",
+        ],
+      },
+      {
+        title: "Backend",
+        items: ["FastAPI", "Node.js", "Express", "Flask", "Prisma"],
+      },
+      {
+        title: "Databases",
+        items: ["PostgreSQL", "MongoDB", "MySQL", "pgvector"],
+      },
+      {
+        title: "Cloud",
+        items: ["AWS", "Firebase", "Supabase"],
+      },
+      {
+        title: "Other",
+        items: [
+          "RESTful APIs",
+          "SSE Streaming",
+          "Async Architecture",
+          "Modular Architecture",
+          "SQL Optimization",
+        ],
+      },
+    ],
+    marquee: [
+      "Full Stack",
+      "AI Engineer",
+      "LangGraph",
+      "FastAPI",
+      "React Native",
+      "pgvector",
+      "Agentic AI",
+      "Streaming",
+      "✦",
+    ],
+  },
   directors: {
     background: "#E0C8BB",
     textColor: "#2A1810",
