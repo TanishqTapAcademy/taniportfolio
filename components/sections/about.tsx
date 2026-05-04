@@ -14,6 +14,11 @@ const SHELL_HOST = "portfolio";
 const SHELL_PATH = "~/site";
 const SHELL_BRANCH = "main";
 
+// terminal log colours — green for verified/primary stacks, blue for info/utility
+const SUCCESS = "#A6FFB5";
+const INFO = "#A0C4FF";
+const ERROR = "#FF8A8A";
+
 function slug(s: string) {
   return s.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-");
 }
@@ -273,71 +278,70 @@ function Terminal() {
           style={{ ...ruleStyle, opacity: catStage >= 1 ? 0.2 : 0 }}
         />
 
-        {/* categories */}
-        <div className="mt-3 space-y-3">
+        {/* categories — tier-coloured log lines (✓ primary, i info) */}
+        <div className="mt-3 space-y-2.5">
           {skills.map((cat, i) => {
             const visible = catStage >= 2 + i;
+            const tier: "primary" | "info" = i < 5 ? "primary" : "info";
+            const tierColor = tier === "primary" ? SUCCESS : INFO;
+            const icon = tier === "primary" ? "✓" : "i";
             return (
-              <div
+              <motion.div
                 key={cat.title}
-                className="grid grid-cols-1 items-baseline gap-x-5 sm:grid-cols-[11rem_1fr]"
+                initial={{ opacity: 0, x: -10 }}
+                animate={
+                  visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }
+                }
+                transition={{ duration: 0.3, ease }}
+                className="grid grid-cols-[1.25rem_8rem_1fr] items-baseline gap-x-3 text-[0.95rem] leading-relaxed"
               >
-                <motion.span
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={
-                    visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -8 }
-                  }
-                  transition={{ duration: 0.25, ease }}
-                  className="whitespace-nowrap text-[0.95rem]"
-                  style={{ color: accent }}
+                <span
+                  className="select-none font-bold"
+                  style={{ color: tierColor }}
                 >
-                  [ {cat.title.toLowerCase()} ]
-                </motion.span>
-                <span className="flex flex-wrap gap-x-2 gap-y-2">
+                  {icon}
+                </span>
+                <span style={{ color: tierColor }}>
+                  {cat.title}
+                </span>
+                <span className="flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
                   {cat.items.map((item, j) => (
-                    <motion.span
+                    <span
                       key={item}
-                      initial={{ opacity: 0, scale: 0.65, y: 8 }}
-                      animate={
-                        visible
-                          ? { opacity: 1, scale: 1, y: 0 }
-                          : { opacity: 0, scale: 0.65, y: 8 }
-                      }
-                      transition={{
-                        type: "spring",
-                        stiffness: 460,
-                        damping: 22,
-                        mass: 0.6,
-                        delay: visible ? j * 0.04 : 0,
-                      }}
-                      whileHover={{
-                        backgroundColor: accent,
-                        color: "#08003C",
-                        borderColor: accent,
-                        scale: 1.06,
-                        rotate: -1.5,
-                      }}
-                      className="relative inline-flex cursor-default items-center gap-1 px-2 py-1 text-[0.95rem] leading-none"
-                      style={{
-                        color: textColor,
-                        backgroundColor: `${accent}10`,
-                        border: `1px solid ${accent}38`,
-                        borderRadius: 3,
-                        textShadow: `0 0 1px ${textColor}55`,
-                      }}
+                      className="inline-flex items-baseline"
                     >
-                      <span
-                        aria-hidden
-                        className="text-[0.7rem] leading-none"
-                        style={{ color: accent }}
+                      <motion.span
+                        initial={{ opacity: 0, y: 4 }}
+                        animate={
+                          visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }
+                        }
+                        transition={{
+                          duration: 0.35,
+                          ease,
+                          delay: visible ? j * 0.05 : 0,
+                        }}
+                        whileHover={{
+                          color: accent,
+                          textShadow: `0 0 6px ${tierColor}aa, 0 0 1px ${accent}`,
+                        }}
+                        className="cursor-default rounded-sm px-1 py-0.5 transition-colors"
+                        style={{ color: tierColor }}
                       >
-                        ▸
-                      </span>
-                      {slug(item)}
-                    </motion.span>
+                        {slug(item)}
+                      </motion.span>
+                      {j < cat.items.length - 1 && (
+                        <span
+                          aria-hidden
+                          className="px-0.5 select-none"
+                          style={{ color: `${tierColor}55` }}
+                        >
+                          ·
+                        </span>
+                      )}
+                    </span>
                   ))}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -351,15 +355,38 @@ function Terminal() {
           }}
         />
 
-        {/* count */}
+        {/* success line — Magic-UI style closure */}
         <div
-          className="mt-2 transition-opacity duration-200"
+          className="mt-3 transition-opacity duration-200"
           style={{
-            color: muted,
             opacity: catStage >= totalCategories + 3 ? 1 : 0,
           }}
         >
-          {totalCategories} categories · {totalTools} tools · 0 errors
+          <div className="flex flex-wrap items-baseline gap-x-2">
+            <span
+              className="select-none font-bold"
+              style={{ color: SUCCESS }}
+            >
+              ✓
+            </span>
+            <span style={{ color: textColor }}>
+              Success!{" "}
+            </span>
+            <span style={{ color: muted }}>
+              {totalCategories} categories, {totalTools} tools loaded.
+            </span>
+          </div>
+          <div className="mt-1 flex flex-wrap items-baseline gap-x-2">
+            <span
+              className="select-none font-bold"
+              style={{ color: INFO }}
+            >
+              i
+            </span>
+            <span style={{ color: muted }}>
+              Stack ready for production. 0 errors.
+            </span>
+          </div>
         </div>
 
         {/* fresh prompt */}
