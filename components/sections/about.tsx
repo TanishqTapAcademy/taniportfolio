@@ -17,7 +17,6 @@ const SHELL_BRANCH = "main";
 // terminal log colours — green for verified/primary stacks, blue for info/utility
 const SUCCESS = "#A6FFB5";
 const INFO = "#A0C4FF";
-const ERROR = "#FF8A8A";
 
 function slug(s: string) {
   return s.toLowerCase().replace(/\s+/g, "-").replace(/\//g, "-");
@@ -75,7 +74,11 @@ function Terminal() {
   const { textColor, accent, name, role, skills } = siteConfig.about;
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.25 });
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.05,
+    margin: "0px 0px 200px 0px",
+  });
 
   const [phase, setPhase] = useState<Phase>("boot");
   const [typedWhoami, setTypedWhoami] = useState("");
@@ -176,7 +179,7 @@ function Terminal() {
       ref={ref}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.985 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.25 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{ duration: 0.8, ease }}
       className="mx-auto w-full max-w-[920px] overflow-hidden rounded-xl backdrop-blur-sm"
       style={{
@@ -227,7 +230,7 @@ function Terminal() {
 
       {/* body */}
       <div
-        className="px-5 py-6 font-departure text-sm leading-[1.7] sm:px-8 sm:py-8 sm:text-[0.95rem]"
+        className="px-3 py-5 font-departure text-[0.8rem] leading-[1.6] sm:px-8 sm:py-8 sm:text-[0.95rem] sm:leading-[1.7]"
         style={{ color: textColor }}
       >
         {/* boot line */}
@@ -293,7 +296,7 @@ function Terminal() {
                   visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }
                 }
                 transition={{ duration: 0.3, ease }}
-                className="grid grid-cols-[1.25rem_8rem_1fr] items-baseline gap-x-3 text-[0.95rem] leading-relaxed"
+                className="grid grid-cols-[1.25rem_1fr] items-baseline gap-x-2 text-[0.85rem] leading-relaxed sm:text-[0.95rem] md:grid-cols-[1.25rem_8rem_1fr] md:gap-x-3"
               >
                 <span
                   className="select-none font-bold"
@@ -301,10 +304,17 @@ function Terminal() {
                 >
                   {icon}
                 </span>
-                <span style={{ color: tierColor }}>
-                  {cat.title}
-                </span>
-                <span className="flex flex-wrap items-baseline gap-x-1 gap-y-0.5">
+                <span
+                  className="md:contents"
+                  style={{ color: tierColor }}
+                >
+                  <span
+                    className="block whitespace-nowrap md:inline"
+                    style={{ color: tierColor }}
+                  >
+                    {cat.title}
+                  </span>
+                  <span className="mt-1 flex flex-wrap items-baseline gap-x-1 gap-y-0.5 md:mt-0">
                   {cat.items.map((item, j) => (
                     <span
                       key={item}
@@ -340,6 +350,7 @@ function Terminal() {
                       )}
                     </span>
                   ))}
+                  </span>
                 </span>
               </motion.div>
             );
@@ -429,7 +440,7 @@ export function About() {
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.7, ease }}
         className="mx-auto flex max-w-[1400px] items-center gap-4"
       >
@@ -452,7 +463,7 @@ export function About() {
           <motion.h2
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 80 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 1, ease }}
             className="font-departure font-black uppercase leading-[0.92] tracking-tight"
             style={{ fontSize: "clamp(2.5rem, 8vw, 7rem)" }}
@@ -462,7 +473,7 @@ export function About() {
           <motion.p
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.8, ease, delay: 0.15 }}
             className="mt-4 font-departure text-xs uppercase tracking-[0.25em]"
             style={{ color: accent }}
@@ -475,7 +486,7 @@ export function About() {
           <motion.p
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.9, ease, delay: 0.25 }}
             className="font-departure text-base leading-relaxed md:text-lg"
             style={{ color: textColor }}
@@ -485,7 +496,7 @@ export function About() {
           <motion.p
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.9, ease, delay: 0.4 }}
             className="mt-6 font-departure text-sm leading-relaxed opacity-70"
           >
@@ -520,7 +531,7 @@ export function About() {
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.7, ease }}
           className="flex items-baseline gap-6"
         >
@@ -542,7 +553,7 @@ export function About() {
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.7, ease }}
         className="mx-auto mt-[14vh] flex max-w-[1400px] items-center justify-between font-departure text-xs uppercase tracking-[0.3em] opacity-70"
       >

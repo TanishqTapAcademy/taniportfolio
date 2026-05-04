@@ -84,7 +84,7 @@ function ScanLine({ accent }: { accent: string }) {
           ? { opacity: 0 }
           : { top: ["-2%", "102%"], opacity: [0, 0.8, 0] }
       }
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{
         duration: 1.6,
         ease: "easeInOut",
@@ -318,7 +318,7 @@ function ChannelCard({
       rel={channel.href.startsWith("http") ? "noreferrer" : undefined}
       initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{ duration: 0.6, ease, delay: 1.05 + index * 0.08 }}
       whileHover={reduce ? undefined : { y: -3 }}
       className="group relative flex flex-col gap-3 overflow-hidden rounded-xl px-5 py-5"
@@ -413,13 +413,13 @@ export function Contact() {
             style={{ backgroundColor: c.textColor, opacity: 0.25 }}
             initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 0.25 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.7, ease }}
           />
           <motion.span
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 0.7, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5, ease, delay: 0.15 }}
             className="font-mono text-xs uppercase tracking-[0.3em]"
           >
@@ -430,13 +430,13 @@ export function Contact() {
             style={{ backgroundColor: c.textColor, opacity: 0.25 }}
             initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0 }}
             whileInView={{ scaleX: 1, opacity: 0.25 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5, ease, delay: 0.25 }}
           />
           <motion.span
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.5, ease, delay: 0.3 }}
             className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em]"
             style={{ color: c.accent }}
@@ -465,7 +465,7 @@ export function Contact() {
                       : { opacity: 0, y: 80, filter: "blur(8px)" }
                   }
                   whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
                   transition={{
                     duration: 1,
                     ease,
@@ -481,7 +481,7 @@ export function Contact() {
             <motion.p
               initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.7, ease, delay: 0.7 }}
               className="mt-6 max-w-[560px] font-mono text-sm leading-relaxed sm:text-[0.95rem]"
               style={{ color: c.muted }}
@@ -494,7 +494,7 @@ export function Contact() {
           <motion.div
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.8, ease, delay: 0.55 }}
             className="self-end md:col-span-5"
           >
@@ -545,7 +545,7 @@ export function Contact() {
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.8, ease, delay: 0.85 }}
           className="mt-12"
         >
@@ -579,7 +579,7 @@ export function Contact() {
           download={c.resume.fileName}
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.7, ease, delay: 1.4 }}
           whileHover={reduce ? undefined : { y: -2 }}
           className="group relative mt-8 flex items-center justify-between gap-4 overflow-hidden rounded-xl px-5 py-5 sm:px-7"
@@ -634,7 +634,7 @@ export function Contact() {
         <motion.div
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.7, ease, delay: 1.6 }}
           className="mt-12 flex flex-col items-center justify-between gap-3 border-t pt-6 font-mono text-[0.65rem] uppercase tracking-[0.3em] sm:flex-row"
           style={{ borderColor: `${c.textColor}15`, color: c.muted }}

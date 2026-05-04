@@ -15,9 +15,11 @@ export function Directors() {
   const rotateAmount = 360 / N;
   const zTranslateFactor = 2 * Math.tan((rotateAmount / 2) * (Math.PI / 180));
 
-  const radius = `calc(50vw / ${zTranslateFactor} + 30vw)`;
-  const negRadius = `calc(50vw / -${zTranslateFactor} - 30vw)`;
-  const perspective = `calc(50vw / ${zTranslateFactor} + 30vw)`;
+  // tile dimensions are controlled via CSS vars set on the perspective wrapper
+  // so they can adapt across breakpoints (portrait mobile vs landscape desktop)
+  const radius = `calc(var(--tile-w) / ${zTranslateFactor} + var(--tile-gap))`;
+  const negRadius = `calc(var(--tile-w) / -${zTranslateFactor} - var(--tile-gap))`;
+  const perspective = `calc(var(--tile-w) / ${zTranslateFactor} + var(--tile-gap))`;
 
   const trackRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -46,7 +48,10 @@ export function Directors() {
     >
       {/* layer 0 — sticky 3D ring + sticky arrows + counter */}
       <div className="sticky top-0 z-0 flex h-screen w-full items-center justify-center overflow-hidden">
-        <div className="relative h-full w-full" style={{ perspective }}>
+        <div
+          className="relative h-full w-full [--tile-gap:14vw] [--tile-h:calc(var(--tile-w)*5/4)] [--tile-w:72vw] sm:[--tile-gap:30vw] sm:[--tile-h:calc(var(--tile-w)*9/16)] sm:[--tile-w:50vw]"
+          style={{ perspective }}
+        >
           <motion.div
             className="absolute left-1/2 top-1/2"
             style={{
@@ -62,10 +67,10 @@ export function Directors() {
                 key={item.name}
                 className="absolute left-1/2 top-1/2 flex items-center justify-center"
                 style={{
-                  width: "50vw",
-                  height: "calc(50vw * 9/16)",
-                  marginLeft: "-25vw",
-                  marginTop: "calc(-25vw * 9/16)",
+                  width: "var(--tile-w)",
+                  height: "var(--tile-h)",
+                  marginLeft: "calc(var(--tile-w) / -2)",
+                  marginTop: "calc(var(--tile-h) / -2)",
                   transform: `rotateY(${rotateAmount * i}deg) translateZ(${radius})`,
                   backfaceVisibility: "hidden",
                   background:
@@ -74,7 +79,7 @@ export function Directors() {
                 }}
               >
                 <span
-                  className="font-departure text-2xl uppercase tracking-widest"
+                  className="font-departure text-xl uppercase tracking-widest sm:text-2xl"
                   style={{ color: "rgba(42,24,16,0.55)" }}
                 >
                   {item.name}

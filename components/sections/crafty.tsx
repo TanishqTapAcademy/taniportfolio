@@ -6,9 +6,10 @@ import { siteConfig } from "@/lib/site-config";
 const ease = [0.65, 0.01, 0.05, 0.99] as const;
 
 const POSITION_CLASS: Record<string, string> = {
-  top: "left-[20%] top-[22%]",
-  middle: "right-[18%] top-[46%]",
-  bottom: "bottom-[26%] left-[36%]",
+  top: "left-[8%] top-[24%] sm:left-[20%] sm:top-[22%]",
+  middle:
+    "right-[6%] top-[62%] sm:right-[18%] sm:top-[46%] sm:bottom-auto",
+  bottom: "bottom-[22%] left-[28%] sm:bottom-[26%] sm:left-[36%]",
 };
 
 export function Crafty() {
@@ -47,7 +48,7 @@ export function Crafty() {
             key={line}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.9, ease, delay: 0.15 + i * 0.12 }}
             className="font-departure font-black uppercase leading-[0.95] tracking-tight"
             style={{
@@ -75,7 +76,7 @@ export function Crafty() {
                 }
           }
           whileInView={{ opacity: 1, scale: 1, rotate: s.rotate, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{
             type: "spring",
             stiffness: 380,

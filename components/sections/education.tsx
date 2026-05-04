@@ -56,7 +56,7 @@ function Aura({
         opacity: [0, intensity, intensity * 0.35],
         scale: [scales.from, scales.peak, scales.end],
       }}
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{
         duration,
         ease: auraEase,
@@ -95,7 +95,7 @@ function Crest({ color }: { color: string }) {
 function PhotoPlaceholder({ color }: { color: string }) {
   return (
     <div
-      className="relative h-[120px] w-[96px] shrink-0 overflow-hidden rounded-sm"
+      className="relative h-[78px] w-[60px] shrink-0 overflow-hidden rounded-sm sm:h-[120px] sm:w-[96px]"
       style={{
         backgroundColor: `${color}10`,
         border: `1px solid ${color}30`,
@@ -176,7 +176,7 @@ function WaxSeal({
       style={{ color, overflow: "visible" }}
       initial={{ scale: 1.7, opacity: 0, rotate: 8 }}
       whileInView={{ scale: 1, opacity: 0.95, rotate: -7 }}
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{
         type: "spring",
         stiffness: 600,
@@ -262,7 +262,7 @@ function CardFront({
     >
       {/* header strip */}
       <div
-        className="flex items-center gap-3 px-5 py-2.5"
+        className="flex items-center gap-2 px-3 py-2 sm:gap-3 sm:px-5 sm:py-2.5"
         style={{ backgroundColor: accent, color: ink }}
       >
         <div style={{ color: ink }}>
@@ -282,7 +282,7 @@ function CardFront({
       </div>
 
       {/* body */}
-      <div className="grid flex-1 grid-cols-[auto_1fr] gap-5 px-5 py-5">
+      <div className="grid flex-1 grid-cols-[auto_1fr] gap-3 px-3 py-3 sm:gap-5 sm:px-5 sm:py-5">
         <PhotoPlaceholder color={ink} />
         <div className="flex flex-col justify-center gap-1 min-w-0">
           <p
@@ -536,7 +536,7 @@ function StudentCard({
             : { y: -120, opacity: 0, rotate: -3, scale: 0.92 }
         }
         whileInView={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{
           type: "spring",
           stiffness: 170,
@@ -548,12 +548,11 @@ function StudentCard({
           rotateX: reduce ? 0 : rx,
           rotateY: reduce ? 0 : ry,
           transformStyle: "preserve-3d",
-          width: "min(540px, 92vw)",
-          aspectRatio: "1.586 / 1",
+          width: "min(540px, 94vw)",
           cursor: "pointer",
           willChange: "transform",
         }}
-        className="relative"
+        className="relative aspect-[1.45/1] sm:aspect-[1.586/1]"
       >
         <motion.div
           animate={
@@ -651,7 +650,11 @@ function TypedCloser({
   color: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.05,
+    margin: "0px 0px 200px 0px",
+  });
   const reduce = useReducedMotion();
   const [typed, setTyped] = useState("");
 
@@ -709,7 +712,7 @@ export function Education() {
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.7, ease }}
         className="mx-auto flex max-w-[1100px] items-center gap-4"
       >
@@ -738,7 +741,7 @@ export function Education() {
         <motion.p
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.7, ease }}
           className="font-departure text-xs uppercase tracking-[0.3em]"
           style={{ color: `${ed.bodyColor}99` }}
@@ -748,7 +751,7 @@ export function Education() {
         <motion.h2
           initial={reduce ? { opacity: 0 } : { opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
           transition={{ duration: 0.6, ease, delay: 0.1 }}
           className="relative mt-2 font-departure font-black uppercase leading-[0.92] tracking-tight"
           style={{
@@ -778,7 +781,7 @@ export function Education() {
                   opacity: [0, 0.9, 0.35],
                   scale: [0.4, 1.6, 1.15],
                 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
                 transition={{
                   duration: 1.3,
                   ease: auraEase,
@@ -794,7 +797,7 @@ export function Education() {
                     : { opacity: 0, y: 100, scale: 0.5, rotate: -8 }
                 }
                 whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
                 transition={{
                   type: "spring",
                   stiffness: 260,
@@ -852,7 +855,7 @@ export function Education() {
           <motion.div
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.7, ease, delay: 1.7 }}
           >
             <p
@@ -866,7 +869,7 @@ export function Education() {
               style={{ backgroundColor: ed.bodyColor, opacity: 0.25 }}
               initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 0.25 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.7, ease, delay: 1.75 }}
             />
             <div className="mt-3 space-y-2.5">
@@ -875,7 +878,7 @@ export function Education() {
                   key={c.code}
                   initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
                   transition={{
                     duration: 0.45,
                     ease,
@@ -899,7 +902,7 @@ export function Education() {
           <motion.div
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{ duration: 0.7, ease, delay: 1.85 }}
           >
             <p
@@ -913,7 +916,7 @@ export function Education() {
               style={{ backgroundColor: ed.bodyColor, opacity: 0.25 }}
               initial={reduce ? { opacity: 0 } : { scaleX: 0, opacity: 0 }}
               whileInView={{ scaleX: 1, opacity: 0.25 }}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
               transition={{ duration: 0.7, ease, delay: 1.9 }}
             />
             <div className="mt-3 space-y-2.5">
@@ -922,7 +925,7 @@ export function Education() {
                   key={s}
                   initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
                   transition={{
                     duration: 0.45,
                     ease,

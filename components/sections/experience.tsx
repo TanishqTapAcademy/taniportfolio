@@ -57,7 +57,7 @@ function InkStamp({
       style={{ color, overflow: "visible" }}
       initial={{ scale: 1.7, opacity: 0, rotate: tilt + 14 }}
       whileInView={{ scale: 1, opacity: 0.92, rotate: tilt }}
-      viewport={{ once: true, amount: 0.5 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{
         type: "spring",
         stiffness: 600,
@@ -205,7 +205,7 @@ function JobTicket({
           : { y: 60, rotate: startRotate, opacity: 0 }
       }
       whileInView={{ y: 0, rotate: job.rotate, opacity: 1 }}
-      viewport={{ once: true, amount: 0.18 }}
+      viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
       transition={{
         type: "spring",
         stiffness: 220,
@@ -291,7 +291,7 @@ function JobTicket({
             key={i}
             initial={reduce ? { opacity: 0 } : { opacity: 0, x: -10 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
             transition={{
               duration: 0.5,
               ease,
@@ -370,7 +370,7 @@ export function Experience() {
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.7, ease }}
         className="mx-auto flex max-w-[1100px] items-center gap-4"
       >
@@ -394,7 +394,7 @@ export function Experience() {
       <motion.h2
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.9, ease }}
         className="mx-auto mt-12 max-w-[1100px] font-departure font-black uppercase leading-[0.92] tracking-tight"
         style={{
@@ -406,7 +406,7 @@ export function Experience() {
       <motion.p
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.8, ease, delay: 0.15 }}
         className="mx-auto mt-4 max-w-[1100px] font-departure text-sm uppercase tracking-[0.25em]"
         style={{ color: `${textColor}99` }}
@@ -434,7 +434,7 @@ export function Experience() {
       <motion.div
         initial={reduce ? { opacity: 0 } : { opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.05, margin: "0px 0px 200px 0px" }}
         transition={{ duration: 0.7, ease }}
         className="mx-auto mt-[12vh] flex max-w-[1100px] flex-col items-center gap-2 text-center"
       >
