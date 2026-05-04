@@ -82,10 +82,10 @@ export function NavMenu({ open, onClose }: NavMenuProps) {
                 className="space-y-4 text-sm text-foreground/70"
               >
                 <a
-                  href={`mailto:${siteConfig.contact.email}`}
+                  href={`mailto:${siteConfig.contact.primary.email}`}
                   className="block hover:text-foreground"
                 >
-                  {siteConfig.contact.email}
+                  {siteConfig.contact.primary.email}
                 </a>
                 <ul className="flex gap-5">
                   {siteConfig.socials.map((s) => (

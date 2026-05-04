@@ -2,13 +2,15 @@ export const siteConfig = {
   name: "Tanishq",
   logo: "TANISHQ",
   tagline: "Crafting playful, considered software.",
-  contact: {
-    email: "you@example.com",
-    phone: "+61 0000 000 000",
-  },
   socials: [
-    { label: "Instagram", href: "https://instagram.com/" },
-    { label: "LinkedIn", href: "https://linkedin.com/" },
+    {
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/tanishq-bhosale",
+    },
+    {
+      label: "GitHub",
+      href: "https://github.com/TanishqBhosale",
+    },
   ],
   nav: [
     { label: "Home", href: "/" },
@@ -156,6 +158,60 @@ export const siteConfig = {
       "Graduated ✓",
     ],
     closer: "Where the foundations got laid.",
+  },
+  contact: {
+    background: "#0A0A0A",
+    textColor: "#FFFFFF",
+    muted: "#9A9A9A",
+    accent: "#E4FE52",
+    red: "#FF3B33",
+    eyebrow: "Contact",
+    statusLabel: "Transmission Open",
+    headline: ["Let's", "talk."],
+    intro:
+      "Got a system to design, an LLM to wrangle, a feature to ship — or just want to say hi. Pick a frequency, I'm listening.",
+    available: {
+      label: "Available now",
+      location: "Bangalore",
+      timezone: "Asia/Kolkata",
+      timezoneShort: "IST",
+    },
+    primary: {
+      label: "Drop me a line",
+      email: "bhosaletanishq4@gmail.com",
+      mailto:
+        "mailto:bhosaletanishq4@gmail.com?subject=Let%27s%20build%20something",
+    },
+    channels: [
+      {
+        id: "phone",
+        label: "Phone",
+        value: "+91 6362157894",
+        href: "tel:+916362157894",
+        glyph: "tel",
+      },
+      {
+        id: "linkedin",
+        label: "LinkedIn",
+        value: "@tanishq-bhosale",
+        href: "https://linkedin.com/in/tanishq-bhosale",
+        glyph: "in",
+      },
+      {
+        id: "github",
+        label: "GitHub",
+        value: "@TanishqBhosale",
+        href: "https://github.com/TanishqBhosale",
+        glyph: "gh",
+      },
+    ],
+    resume: {
+      label: "Download Resume",
+      sub: "PDF · 2 pages",
+      href: "/Tanishq_Bhosale.pdf",
+      fileName: "Tanishq_Bhosale.pdf",
+    },
+    closer: "TX // signing off — your move.",
   },
   experience: {
     background: "#F4ECD6",
