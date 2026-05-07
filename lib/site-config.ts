@@ -287,14 +287,36 @@ export const siteConfig = {
     textColor: "#2A1810",
     accentColor: "#FF3B33",
     items: [
-      { name: "Project 01" },
-      { name: "Project 02" },
-      { name: "Project 03" },
-      { name: "Project 04" },
-      { name: "Project 05" },
-      { name: "Project 06" },
-      { name: "Project 07" },
-      { name: "Project 08" },
+      {
+        name: "AI Code Editor",
+        image: "/projects/AICodeEditor.png",
+        href: "",
+      },
+      {
+        name: "MindSnack Quiz Builder",
+        image: "/projects/MindSnackQuizBuilder.png",
+        href: "",
+      },
+      {
+        name: "Ethereum Price Prediction",
+        image: "/projects/EthereumFuturePricePrediction.png",
+        href: "",
+      },
+      {
+        name: "Financial Fraud Prediction",
+        image: "/projects/FinancialFraudPrediction.png",
+        href: "",
+      },
+      {
+        name: "Food Delivery Data Analysis",
+        image: "/projects/FoodDeliveryDataAnalysis.png",
+        href: "",
+      },
+      {
+        name: "Website Auto Nxtgen",
+        image: "/projects/WebsiteAutoNxtgen.png",
+        href: "",
+      },
     ],
   },
 } as const;

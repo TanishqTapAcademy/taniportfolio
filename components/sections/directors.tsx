@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import {
   motion,
   useMotionValueEvent,
@@ -62,59 +63,53 @@ export function Directors() {
               translateZ: negRadius,
             }}
           >
-            {items.map((item, i) => (
-              <div
-                key={item.name}
-                className="absolute left-1/2 top-1/2 flex items-center justify-center"
-                style={{
-                  width: "var(--tile-w)",
-                  height: "var(--tile-h)",
-                  marginLeft: "calc(var(--tile-w) / -2)",
-                  marginTop: "calc(var(--tile-h) / -2)",
-                  transform: `rotateY(${rotateAmount * i}deg) translateZ(${radius})`,
-                  backfaceVisibility: "hidden",
-                  background:
-                    "linear-gradient(135deg, rgba(42,24,16,0.12), rgba(42,24,16,0.04))",
-                  outline: "1px solid rgba(42,24,16,0.18)",
-                }}
-              >
-                <span
-                  className="font-departure text-xl uppercase tracking-widest sm:text-2xl"
-                  style={{ color: "rgba(42,24,16,0.55)" }}
+            {items.map((item, i) => {
+              const tileStyle = {
+                width: "var(--tile-w)",
+                height: "var(--tile-h)",
+                marginLeft: "calc(var(--tile-w) / -2)",
+                marginTop: "calc(var(--tile-h) / -2)",
+                transform: `rotateY(${rotateAmount * i}deg) translateZ(${radius})`,
+                backfaceVisibility: "hidden" as const,
+                background:
+                  "linear-gradient(135deg, rgba(42,24,16,0.12), rgba(42,24,16,0.04))",
+                outline: "1px solid rgba(42,24,16,0.18)",
+              };
+              const tileClass =
+                "absolute left-1/2 top-1/2 flex flex-col overflow-hidden";
+              const inner = (
+                <div className="relative w-full flex-1">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 72vw"
+                    className="object-cover"
+                    priority={i === 0}
+                    unoptimized
+                  />
+                </div>
+              );
+              return item.href ? (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={tileClass}
+                  style={tileStyle}
                 >
-                  {item.name}
-                </span>
-              </div>
-            ))}
+                  {inner}
+                </a>
+              ) : (
+                <div key={item.name} className={tileClass} style={tileStyle}>
+                  {inner}
+                </div>
+              );
+            })}
           </motion.div>
         </div>
 
-        <div className="pointer-events-none absolute inset-y-0 left-0 right-0 flex items-center justify-between px-6 sm:px-10">
-          <button
-            type="button"
-            aria-label="Previous director"
-            className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full text-xl transition-opacity"
-            style={{
-              border: `1px solid ${accentColor}`,
-              color: accentColor,
-              opacity: activeIndex === 0 ? 0.4 : 1,
-            }}
-          >
-            ‹
-          </button>
-          <button
-            type="button"
-            aria-label="Next director"
-            className="pointer-events-auto flex h-12 w-12 items-center justify-center rounded-full text-xl transition-opacity"
-            style={{
-              border: `1px solid ${accentColor}`,
-              color: accentColor,
-              opacity: activeIndex === N - 1 ? 0.4 : 1,
-            }}
-          >
-            ›
-          </button>
-        </div>
 
         <div
           className="pointer-events-none absolute right-6 top-6 font-departure text-xs uppercase tracking-[0.2em]"
@@ -142,16 +137,20 @@ export function Directors() {
             >
               {item.name}
             </h2>
-            <button
-              type="button"
-              className="pointer-events-auto mt-6 inline-flex items-center justify-center rounded-full px-6 py-2 text-xs uppercase tracking-[0.2em] transition-colors"
-              style={{
-                border: `1px solid ${accentColor}`,
-                color: accentColor,
-              }}
-            >
-              watch movies
-            </button>
+            {item.href ? (
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="pointer-events-auto mt-6 inline-flex items-center justify-center rounded-full px-6 py-2 text-xs uppercase tracking-[0.2em] transition-colors"
+                style={{
+                  border: `1px solid ${accentColor}`,
+                  color: accentColor,
+                }}
+              >
+                view project
+              </a>
+            ) : null}
           </div>
         ))}
       </div>
